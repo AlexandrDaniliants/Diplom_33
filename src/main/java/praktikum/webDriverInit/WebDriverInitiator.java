@@ -3,28 +3,32 @@ package praktikum.webDriverInit;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import praktikum.requests.UserRequests;
+import praktikum.requests.UserRequest;
 import praktikum.user.User;
 
 import static praktikum.constants.ApiRequestsConstants.API_REQUEST_URI;
 
-public class WebDriverInitiator1 {
+public class WebDriverInitiator {
     public WebDriver driver;
     public String name;
     public String email;
     public String password;
 
-    public UserRequests userRequests = new UserRequests();
+    public UserRequest userRequest = new UserRequest();
 
     public void initWebDriver() {
 
-        //Для запуска тестов на Yandex
-        //System.setProperty("webdriver.chrome.driver", "C:\\WebDriver\\bin\\yandexdriver.exe");
-        //ChromeOptions options = new ChromeOptions();
-        //options.setBinary("C:\\ProjectsPraktikum\\Yandex\\YandexBrowser\\Application\\browser.exe");
-        //driver = new ChromeDriver(options);
+//        //Запуск Яндекса
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options = new ChromeOptions();
+//        options.setBinary("C:\\Users\\79262\\AppData\\Local\\Yandex\\YandexBrowser\\Application\\browser.exe");
+//        driver = new ChromeDriver(options);
 
-        //Для запуска тестов на Chrome
+//        //Запуск Мозиллы
+//        WebDriverManager.firefoxdriver().setup();
+//        driver = new FirefoxDriver();
+
+        //Запуск Chrome
         driver = new ChromeDriver();
 
         driver.get(API_REQUEST_URI);
@@ -33,9 +37,9 @@ public class WebDriverInitiator1 {
     @After
     public void tearDown() {
 
-        String accessToken = userRequests.loginUser(new User(email,password)).then().extract().path("accessToken");
+        String accessToken = userRequest.loginUser(new User(email,password)).then().extract().path("accessToken");
         if (accessToken != null) {
-            userRequests.deleteUser(accessToken);
+            userRequest.deleteUser(accessToken);
         }
         driver.quit();
     }
