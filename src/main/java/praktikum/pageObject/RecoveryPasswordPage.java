@@ -3,11 +3,12 @@ package praktikum.pageObject;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
-import static praktikum.constants.LocatorConstants.*;
+import static praktikum.constants.LocatorConstants.HEADLINE_PASSWORD_RECOVERY;
+import static praktikum.constants.LocatorConstants.LOGIN_LINK;
 
-public class ResetPasswordPage extends VisibilityWaiter {
+public class RecoveryPasswordPage extends VisibilityWaiter {
 
-    public ResetPasswordPage(WebDriver driver) {
+    public RecoveryPasswordPage(WebDriver driver) {
         super(driver);
     }
 
