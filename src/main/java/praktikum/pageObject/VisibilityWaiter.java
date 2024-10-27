@@ -8,10 +8,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class PageHelper {
+public class VisibilityWaiter {
+
     protected WebDriver driver;
 
-    public PageHelper(WebDriver driver) {
+    public VisibilityWaiter(WebDriver driver) {
         this.driver = driver;
     }
 
